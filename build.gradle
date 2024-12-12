@@ -1,0 +1,19 @@
+plugins {
+    id 'java' // Para compilar proyectos Java
+}
+
+group = 'com.grise.upm' // Cambia esto según tu paquete
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral() // Repositorio para descargar dependencias
+}
+
+dependencies {
+    // Dependencias necesarias para el proyecto
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3' // Ejemplo: JUnit 5 para pruebas
+}
+
+tasks.test {
+    useJUnitPlatform() // Configura JUnit 5 como el motor de pruebas
+}
