@@ -1,0 +1,49 @@
+plugins {
+    id 'java' // Para compilar proyectos Java
+    id 'jacoco'
+}
+
+group = 'es.upm.grise.prof.curso2024.control1' // Cambia esto según tu paquete
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral() // Repositorio para descargar dependencias
+}
+
+dependencies {
+    // Dependencias necesarias para el proyecto
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3' // Ejemplo: JUnit 5 para pruebas
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0'
+}
+
+jacoco {
+    toolVersion = "0.8.12" // Última versión estable de JaCoCo
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'BUNDLE' // Cobertura a nivel de proyecto completo
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                minimum = 1.0 // 100% de cobertura
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+
+tasks.test {
+    useJUnitPlatform() // Configura JUnit 5 como el motor de pruebas
+}
