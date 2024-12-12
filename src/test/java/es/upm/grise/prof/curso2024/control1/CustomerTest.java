@@ -2,9 +2,14 @@ package es.upm.grise.prof.curso2024.control1;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.beans.Transient;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+import org.mockito.*;
+
 
 
 public class CustomerTest {
@@ -41,6 +46,26 @@ public class CustomerTest {
         assertEquals(expeString, customer.getAccountWithHighestBalance(), "La cuenta con el saldo más alto no se devolvió correctamente");
 
 
+    }
+
+    @Test
+    public void testGetAccountWithHighestBalanceMockito() throws NoAccountsException {
+        Account a1 = mock(Account.class);
+        Account a2 = mock(Account.class);
+
+        when(a1.getCurrentBalance()).thenReturn(100.0f);
+        when(a2.getCurrentBalance()).thenReturn(200.0f);
+
+        when(a1.getAccountNumber()).thenReturn("1");
+        when(a2.getAccountNumber()).thenReturn("2");
+
+        customer.addAccount(a1);
+        customer.addAccount(a2);
+
+        String expeString = "2";
+        assertEquals(expeString, customer.getAccountWithHighestBalance(), "La cuenta con el saldo más alto no se devolvió correctamente");
+
+        
     }
     
 }
