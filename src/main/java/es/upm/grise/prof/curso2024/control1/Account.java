@@ -12,6 +12,15 @@ public class Account {
 	Account() {
 		transactions = new ArrayList<Transaction>();
 	}
+
+	public float setInitialAmount(float initialAmount) {
+		this.initialAmount = initialAmount;
+		return initialAmount;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 	
 	public float getCurrentBalance() {
 		

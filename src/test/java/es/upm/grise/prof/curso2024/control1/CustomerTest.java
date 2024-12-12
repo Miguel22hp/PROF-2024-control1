@@ -22,5 +22,25 @@ public class CustomerTest {
         
         assertThrows(NoAccountsException.class, () -> customer.getAccountWithHighestBalance(), "La excepción NoAccountsException no se lanzó cuando no había cuentas");
     }
+
+    @Test
+    public void testGetAccountWithHighestBalance() throws NoAccountsException {
+        Account a1 = new Account();
+        Account a2 = new Account();
+
+        a1.setInitialAmount(100.0f);
+        a2.setInitialAmount(200.0f);
+
+        a1.setAccountNumber("1");
+        a2.setAccountNumber("2");
+
+        customer.addAccount(a1);
+        customer.addAccount(a2);
+
+        String expeString = "2";
+        assertEquals(expeString, customer.getAccountWithHighestBalance(), "La cuenta con el saldo más alto no se devolvió correctamente");
+
+
+    }
     
 }
