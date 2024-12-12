@@ -2,7 +2,7 @@ plugins {
     id 'java' // Para compilar proyectos Java
 }
 
-group = 'com.grise.upm' // Cambia esto según tu paquete
+group = 'es.upm.grise.prof.curso2024.control1' // Cambia esto según tu paquete
 version = '1.0-SNAPSHOT'
 
 repositories {
